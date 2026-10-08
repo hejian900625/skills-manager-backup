@@ -1,0 +1,17 @@
+{
+  "slug": "wechat-cli",
+  "name": "通过 wechat-cli 读取和分析微信聊天记录",
+  "version": "1.0.1",
+  "installedAt": 1790649489754,
+  "source": "skillhub",
+  "namespace": "user_814dbe54",
+  "canonicalName": "@user_814dbe54/wechat-cli",
+  "labels": {
+    "requires_api_key": "false"
+  },
+  "description_zh": "通过 wechat-cli 读取和分析微信聊天记录。当用户想查看、搜索、导出或分析微信消息、联系人、收藏时调用此技能。",
+  "description_en": "通过 wechat-cli 读取和分析微信聊天记录。当用户想查看、搜索、导出或分析微信消息、联系人、收藏时调用此技能。",
+  "installs": 25117,
+  "installedContentHash": "sha256:321b566f67439b520ab8c03020d2af6789440f08e23f4a7d816e9e435631cb4c",
+  "iconDownloadFailedAt": 1791420634757
+}

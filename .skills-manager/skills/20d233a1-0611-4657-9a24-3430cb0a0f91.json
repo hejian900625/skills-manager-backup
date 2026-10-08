@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "20d233a1-0611-4657-9a24-3430cb0a0f91",
+  "path": "erupt-admin",
+  "path_key": "erupt-admin",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

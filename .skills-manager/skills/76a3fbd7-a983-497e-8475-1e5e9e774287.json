@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "76a3fbd7-a983-497e-8475-1e5e9e774287",
+  "path": "agent-reach",
+  "path_key": "agent-reach",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

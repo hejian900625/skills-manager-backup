@@ -1,0 +1,19 @@
+{
+  "source_key": "OneWave-AI__claude-skills",
+  "repo_url": "https://github.com/onewave-ai/claude-skills",
+  "commit": "27f8cdcea225e627a73de89b9a3d477af9e249da",
+  "source_relative_path": "screenshot-to-code/SKILL.md",
+  "source_skill_sha256": "70bd683bd4c7d3d84ed665dc92dede5b262db9424e866d172b66fa22b98c4e25",
+  "source_tree_sha256": "87607aaaa727a0ac1b723e21f26b1c9bc8a42183285c0234f5aa18484149ee7a",
+  "effective_license": "MIT",
+  "license_files": [
+    "LICENSE"
+  ],
+  "target_category": "design-brand",
+  "selected_rank": 875,
+  "public_branding_applied": true,
+  "product_display_name": "UI截图一键转生产代码｜简诗 AI",
+  "product_slug": "screenshot-to-code",
+  "productization": "简诗 AI canonical v1",
+  "product_summary": "将 UI 设计截图转化为可运行的生产级代码：分析视觉设计、生成干净的现代代码实现、提供完整可运行的实现方案。"
+}

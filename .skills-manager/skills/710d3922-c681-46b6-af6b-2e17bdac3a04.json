@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "710d3922-c681-46b6-af6b-2e17bdac3a04",
+  "path": "codebase-graph-module-rules",
+  "path_key": "codebase-graph-module-rules",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

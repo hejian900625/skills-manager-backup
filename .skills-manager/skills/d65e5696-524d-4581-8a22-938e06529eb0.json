@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "d65e5696-524d-4581-8a22-938e06529eb0",
+  "path": "proactive-agent",
+  "path_key": "proactive-agent",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

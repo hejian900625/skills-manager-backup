@@ -1,0 +1,17 @@
+{
+  "slug": "grill-with-docs",
+  "name": "grill-with-docs",
+  "version": "1.0.0",
+  "installedAt": 1789953306000,
+  "source": "skillhub",
+  "namespace": "user_3c6cb52e",
+  "canonicalName": "@user_3c6cb52e/grill-with-docs",
+  "labels": {
+    "requires_api_key": "false"
+  },
+  "description_zh": "带文档的追问式设计评审：逐题拷问计划/设计直到达成共识，同时把领域术语写进 CONTEXT.md、把关键决策写成 ADR。",
+  "description_en": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+  "installs": 0,
+  "iconDownloadFailedAt": 1791420634759,
+  "installedContentHash": "sha256:ee9fda82c96f99d6475f0bdf4e29fc9517820cb713e934137e87eda3d902d4ee"
+}

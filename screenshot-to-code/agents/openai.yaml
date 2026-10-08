@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI截图一键转生产代码｜简诗 AI"
+  short_description: "将 UI 设计截图转化为可运行的生产级代码：分析视觉设计、生成干净的现代代码实现、提供完整可运行的实现方案。"
+  default_prompt: "使用 $screenshot-to-code 完成“UI截图一键转生产代码”任务，并给出可执行结果。"

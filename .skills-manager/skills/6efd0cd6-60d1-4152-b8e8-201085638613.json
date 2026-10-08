@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "6efd0cd6-60d1-4152-b8e8-201085638613",
+  "path": "codebase-graph-business-rules",
+  "path_key": "codebase-graph-business-rules",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

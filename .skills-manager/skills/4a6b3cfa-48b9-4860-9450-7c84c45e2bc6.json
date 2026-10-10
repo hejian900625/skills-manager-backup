@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "4a6b3cfa-48b9-4860-9450-7c84c45e2bc6",
+  "path": "lofi-prototype",
+  "path_key": "lofi-prototype",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

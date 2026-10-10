@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>产品原型 · 低保真线稿</title>
+<link rel="stylesheet" href="lofi.css">
+</head>
+<body>
+
+<!-- ============ 舞台切换条：桌面 1440 / 平板 768 / 手机 375 ============ -->
+<div class="stage-bar">
+  <span class="sb-title">原型 · 低保真线稿</span>
+  <span class="sb-note">Axure Wireframe · 黑白灰</span>
+  <div class="seg">
+    <button data-w="1440">桌面 1440</button>
+    <button data-w="768">平板 768</button>
+    <button data-w="375">手机 375</button>
+    <button data-w="full" class="is-active">自适应</button>
+  </div>
+</div>
+
+<div class="stage">
+<div class="app" id="app">
+
+  <!-- ============ P0 · 页面流程总览 ============ -->
+  <section class="page" id="p0" data-pid="P0" data-title="页面流程总览">
+    <div class="browser-bar">
+      <button class="bb-btn" data-back title="返回上一页"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+      <span class="bb-id">P0</span>
+      <span class="bb-url"></span>
+    </div>
+    <div class="content">
+      <h1 class="h1">页面流程总览</h1>
+      <p class="xs" style="margin-top:4px">点击任意节点可跳转到对应页面；箭头标签为触发条件。</p>
+      <div class="card" style="margin-top:16px">
+        <div class="card-bd">
+          <div class="flow">
+            <!-- 流程节点模板：复制改 id/名称/说明 -->
+            <div class="flow-col">
+              <div class="flow-node" data-goto="p1">
+                <span class="fn-id">P1</span><span class="fn-name">登录</span>
+                <div class="fn-desc">账号密码 → 校验</div>
+              </div>
+              <div class="flow-arrow"><span class="fa-line"></span><span class="fa-tip">校验通过</span></div>
+            </div>
+            <div class="flow-col">
+              <div class="flow-node" data-goto="p1">
+                <span class="fn-id">P2</span><span class="fn-name">列表页</span>
+                <div class="fn-desc">主入口</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 待确认项用红色批注 -->
+      <div class="anno anno-red" style="margin-top:16px">
+        <b>待确认：</b>此处列出需要产品/业务拍板的开放问题。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P1 · 示例页面（复制此段新增页面） ============ -->
+  <section class="page is-active" id="p1" data-pid="P1" data-title="示例页面">
+    <div class="browser-bar">
+      <button class="bb-btn" data-back title="返回上一页"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+      <span class="bb-id">P1</span>
+      <span class="bb-url"></span>
+    </div>
+    <div class="shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sb-brand"><span data-icon="grid"></span> 产品名</div>
+        <div class="sb-body">
+          <div class="nav">
+            <div class="nav-label">主导航</div>
+            <a class="nav-item is-active" data-goto="p1"><span data-icon="home"></span> 示例页面</a>
+            <a class="nav-item" data-goto="p0"><span data-icon="list"></span> 流程总览</a>
+          </div>
+        </div>
+        <div class="sb-foot">
+          <div class="row"><span class="avatar avatar-sm">U</span><span class="sm strong">用户名</span></div>
+        </div>
+      </aside>
+      <div class="scrim" data-close></div>
+      <div class="main">
+        <header class="topbar">
+          <button class="btn btn-ghost btn-icon hamburger" data-sidebar-open="#sidebar" aria-label="菜单"><span data-icon="menu"></span></button>
+          <span class="tb-title">示例页面</span>
+          <div class="tb-right">
+            <button class="btn btn-secondary btn-icon" data-icon="search" aria-label="搜索"></button>
+            <button class="btn btn-primary" data-loading="1200" data-loading-done="操作完成">主操作</button>
+          </div>
+        </header>
+        <div class="content stack">
+          <div class="card">
+            <div class="card-hd"><span class="card-title">卡片标题</span><div class="spacer"></div><button class="btn btn-sm btn-ghost" data-toast="更多操作">更多</button></div>
+            <div class="card-bd stack">
+              <p class="body">在这里填充页面内容。所有组件直接复用 <code>lofi.css</code> 中的类名。</p>
+              <div class="row-md wrap">
+                <button class="btn btn-primary">主按钮</button>
+                <button class="btn btn-secondary">次按钮</button>
+                <button class="btn">默认按钮</button>
+                <button class="btn btn-ghost">文字按钮</button>
+                <button class="btn btn-danger">删除</button>
+                <button class="btn" disabled>禁用</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="tabbar">
+          <a class="tb is-active" data-goto="p1"><span data-icon="home"></span>首页</a>
+          <a class="tb" data-goto="p0"><span data-icon="list"></span>流程</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="lofi.js"></script>
+</body>
+</html>

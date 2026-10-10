@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>学习任务平台 · 低保真原型</title>
+<link rel="stylesheet" href="lofi.css">
+</head>
+<body>
+
+<!-- ==================== 舞台切换条 ==================== -->
+<div class="stage-bar">
+  <span class="sb-title">学习任务平台 · 低保真原型</span>
+  <span class="sb-note">Axure Wireframe · 黑白灰 + 单红警示</span>
+  <div class="seg">
+    <button data-w="1440">桌面 1440</button>
+    <button data-w="768">平板 768</button>
+    <button data-w="375">手机 375</button>
+    <button data-w="full" class="is-active">自适应</button>
+  </div>
+</div>
+
+<div class="stage">
+<div class="app" id="app">
+
+<!-- ==================================================================
+     P0 · 页面流程总览
+     ================================================================== -->
+<section class="page" id="p0" data-pid="P0" data-title="页面流程总览">
+  <div class="browser-bar">
+    <button class="bb-btn" data-back title="返回"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+    <span class="bb-id">P0</span><span class="bb-url"></span>
+  </div>
+  <div class="content stack-lg">
+    <div>
+      <h1 class="h1">页面流程总览</h1>
+      <p class="xs" style="margin-top:4px">点击节点跳转；箭头标签为跳转触发条件；<span class="tag tag-danger">红</span> 表示异常/破坏性分支。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><span class="card-title">主流程</span><div class="spacer"></div><span class="xs">P1 → P2 → P3</span></div>
+      <div class="card-bd">
+        <div class="flow">
+          <div class="flow-col">
+            <div class="flow-node" data-goto="p1">
+              <span class="fn-id">P1</span><span class="fn-name">登录</span>
+              <div class="fn-desc">手机号 + 验证码 / 密码</div>
+            </div>
+            <div class="flow-arrow"><span class="fa-line"></span><span class="fa-tip">校验通过</span></div>
+          </div>
+          <div class="flow-col">
+            <div class="flow-node" data-goto="p2">
+              <span class="fn-id">P2</span><span class="fn-name">任务列表</span>
+              <div class="fn-desc">筛选 / 排序 / 分页</div>
+            </div>
+            <div class="flow-arrow"><span class="fa-line"></span><span class="fa-tip">点击行</span></div>
+          </div>
+          <div class="flow-col">
+            <div class="flow-node" data-goto="p3">
+              <span class="fn-id">P3</span><span class="fn-name">任务详情</span>
+              <div class="fn-desc">编辑 / 审批 / 删除</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><span class="card-title">异常与分支</span></div>
+      <div class="card-bd">
+        <div class="flow">
+          <div class="flow-col">
+            <div class="flow-node" data-goto="p1">
+              <span class="fn-id">P1</span><span class="fn-name">登录</span>
+            </div>
+            <div class="flow-arrow"><span class="fa-line"></span><span class="fa-tip" style="color:var(--danger)">密码错误 ≥3 次</span></div>
+          </div>
+          <div class="flow-col">
+            <div class="flow-node" data-goto="p2" style="border-color:var(--danger-line)">
+              <span class="fn-id">P1-E</span><span class="fn-name">账号锁定</span>
+              <div class="fn-desc" style="color:var(--danger)">红色警示 Alert + 60s 冷却</div>
+            </div>
+          </div>
+          <div class="flow-col">
+            <div class="flow-node" data-goto="p2">
+              <span class="fn-id">P2-E</span><span class="fn-name">空列表 / 加载失败</span>
+              <div class="fn-desc">骨架屏 → 空状态 → 错误重试</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><span class="card-title">全局浮层</span></div>
+      <div class="card-bd row wrap" style="gap:12px">
+        <button class="btn btn-secondary" data-modal-open="#m-create">M1 新建任务（弹窗·校验）</button>
+        <button class="btn btn-secondary" data-modal-open="#m-delete">M2 删除确认（危险操作）</button>
+        <button class="btn btn-secondary" data-drawer-open="#d-detail">D1 详情抽屉</button>
+        <button class="btn btn-secondary" data-goto="p9">P9 组件与状态规范</button>
+      </div>
+    </div>
+
+    <div class="anno anno-red">
+      <b>待确认（红 = 未决事项）：</b>① 登录是否支持第三方授权；② 任务删除是软删还是硬删；③ 移动端是否需要批量操作。
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     P1 · 登录
+     ================================================================== -->
+<section class="page" id="p1" data-pid="P1" data-title="登录">
+  <div class="browser-bar">
+    <button class="bb-btn" data-back title="返回"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+    <span class="bb-id">P1</span><span class="bb-url"></span>
+  </div>
+  <div class="content" style="display:grid;place-items:center;min-height:calc(100vh - 36px)">
+    <div style="width:100%;max-width:360px" class="stack">
+      <div class="center stack-sm" style="margin-bottom:8px">
+        <div class="ph-img" style="width:56px;height:56px;border-radius:var(--r-md);margin:0 auto"><span>LOGO</span></div>
+        <div class="h2">学习任务平台</div>
+        <div class="xs">登录后管理你的学习任务</div>
+      </div>
+
+      <form class="card" data-validate data-success="登录成功，正在跳转…" data-success-goto="p2">
+        <div class="card-bd stack">
+          <div class="field">
+            <label class="field-label">手机号 <span class="req">*</span></label>
+            <div class="input-affix">
+              <span class="affix" data-icon="user"></span>
+              <input class="input" type="tel" placeholder="请输入 11 位手机号" data-required data-rule="phone" data-rule-msg="手机号格式不正确" value="13800000000">
+            </div>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field">
+            <label class="field-label">密码 <span class="req">*</span></label>
+            <div class="input-affix">
+              <span class="affix" data-icon="setting"></span>
+              <input class="input" type="password" placeholder="请输入密码" data-required data-rule="min:6" data-rule-msg="密码至少 6 位">
+              <button type="button" class="affix affix-right btn btn-ghost btn-sm btn-icon" data-toggle-pw aria-label="显示密码"><span data-icon="eye"></span></button>
+            </div>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="row" style="justify-content:space-between">
+            <label class="check"><input type="checkbox" checked><span class="box"></span><span class="sm">记住我</span></label>
+            <a class="sm" data-toast="找回密码流程待补充">忘记密码？</a>
+          </div>
+
+          <div class="alert alert-error">
+            <span class="a-ico" data-icon="warn"></span>
+            <div><span class="strong">账号已被锁定</span><br>连续 3 次输入错误密码，请 60 秒后重试或联系管理员。</div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit" data-loading="900">登 录</button>
+          <button class="btn btn-block" type="button" data-goto="p2">以游客身份浏览</button>
+        </div>
+      </form>
+
+      <div class="anno">
+        <b>交互说明：</b>提交前做必填 + 格式校验；校验失败字段标红并聚焦首个错误项；登录按钮进入 loading 态，成功后跳转 P2。红色 Alert 仅在异常时出现。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     P2 · 任务列表
+     ================================================================== -->
+<section class="page is-active" id="p2" data-pid="P2" data-title="任务列表">
+  <div class="browser-bar">
+    <button class="bb-btn" data-back title="返回"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+    <span class="bb-id">P2</span><span class="bb-url"></span>
+  </div>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sb-brand"><span data-icon="grid"></span> 学习任务</div>
+      <div class="sb-body">
+        <div class="nav">
+          <div class="nav-label">工作区</div>
+          <a class="nav-item is-active" data-goto="p2"><span data-icon="list"></span> 任务列表 <span class="badge-dot">12</span></a>
+          <a class="nav-item" data-goto="p4"><span data-icon="grid"></span> 数据看板</a>
+          <a class="nav-item" data-collapse="#nav-sub-1" aria-expanded="true"><span data-icon="inbox"></span> 我的分组 <span class="caret" data-icon="chevronRight" data-icon-size="12"></span></a>
+          <div class="nav-sub is-open" id="nav-sub-1">
+            <a class="nav-item" data-goto="p2">本周待办</a>
+            <a class="nav-item" data-goto="p2">已完成</a>
+            <a class="nav-item is-disabled">归档（无权限）</a>
+          </div>
+          <div class="nav-label">系统</div>
+          <a class="nav-item" data-goto="p9"><span data-icon="setting"></span> 组件规范</a>
+          <a class="nav-item" data-goto="p0"><span data-icon="arrowRight"></span> 流程总览</a>
+        </div>
+      </div>
+      <div class="sb-foot">
+        <div class="row-md">
+          <span class="avatar">李</span>
+          <div class="grow" style="min-width:0">
+            <div class="sm strong ellipsis">李老师</div>
+            <div class="xs-sm ellipsis">数学组 · 管理员</div>
+          </div>
+          <button class="btn btn-ghost btn-icon btn-sm" data-icon="logout" data-toast="退出登录" aria-label="退出"></button>
+        </div>
+      </div>
+    </aside>
+    <div class="scrim" data-close></div>
+
+    <div class="main">
+      <header class="topbar">
+        <button class="btn btn-ghost btn-icon hamburger" data-sidebar-open="#sidebar" aria-label="菜单"><span data-icon="menu"></span></button>
+        <span class="tb-title">任务列表</span>
+        <div class="tb-right">
+          <button class="btn btn-secondary btn-icon" data-icon="refresh" data-skeleton="#tblWrap" data-skeleton-ms="1400" aria-label="刷新"></button>
+          <button class="btn btn-icon btn-ghost" data-icon="bell" data-toast="3 条未读通知" aria-label="通知"></button>
+          <button class="btn btn-primary" data-modal-open="#m-create"><span data-icon="plus" data-icon-size="14"></span> 新建任务</button>
+        </div>
+      </header>
+
+      <div class="content stack">
+        <!-- 统计 -->
+        <div class="auto-4">
+          <div class="stat"><div class="stat-label">全部任务</div><div class="stat-value">128</div><div class="stat-delta">较上周 +12</div></div>
+          <div class="stat"><div class="stat-label">进行中</div><div class="stat-value">34</div><div class="stat-delta">本周新增 8</div></div>
+          <div class="stat"><div class="stat-label">待批改</div><div class="stat-value">19</div><div class="stat-delta">平均等待 2.4h</div></div>
+          <div class="stat"><div class="stat-label">完成率</div><div class="stat-value">86%</div><div class="progress" style="margin-top:8px"><div class="bar" style="width:86%"></div></div></div>
+        </div>
+
+        <!-- 列表 -->
+        <div class="card" data-tab-group>
+          <div class="card-hd">
+            <div class="tabs tabs-pill" style="border-bottom:0">
+              <button class="tab is-active" data-tab="all">全部</button>
+              <button class="tab" data-tab="todo">待完成</button>
+              <button class="tab" data-tab="doing">进行中</button>
+              <button class="tab is-disabled">已归档</button>
+            </div>
+            <div class="spacer"></div>
+            <div class="row toolbar-responsive" style="gap:8px;flex:0 1 420px">
+              <div class="input-affix grow">
+                <span class="affix" data-icon="search" data-icon-size="14"></span>
+                <input class="input" placeholder="搜索任务名称 / 学生">
+              </div>
+              <div class="select" style="flex:0 0 120px" data-placeholder="全部状态">
+                <button type="button" class="select-trigger"><span class="sel-val is-placeholder">全部状态</span><span class="caret" data-icon="chevronDown" data-icon-size="12"></span></button>
+                <div class="select-menu">
+                  <div class="opt is-selected" data-value="all" data-label="全部状态">全部状态</div>
+                  <div class="opt" data-value="todo" data-label="待完成">待完成</div>
+                  <div class="opt" data-value="doing" data-label="进行中">进行中</div>
+                  <div class="opt is-disabled" data-value="archived" data-label="已归档（无权限）">已归档（无权限）</div>
+                </div>
+              </div>
+              <button class="btn btn-secondary" data-icon="filter" data-toast="高级筛选面板">筛选</button>
+            </div>
+          </div>
+
+          <!-- Tab 面板：正常态 -->
+          <div data-tab-pane="all" class="tab-pane is-active">
+            <div id="tblWrap" style="position:relative">
+              <div class="table-wrap" style="border:0;border-radius:0;border-top:1px solid var(--line-soft)">
+                <table class="table table-mobile">
+                  <thead>
+                    <tr>
+                      <th style="width:36px"><label class="check" data-check-all><input type="checkbox"><span class="box" style="width:15px;height:15px"></span></label></th>
+                      <th class="sortable is-sorted">任务名称 <span class="sort">↑</span></th>
+                      <th data-label="所属班级">所属班级</th>
+                      <th data-label="截止">截止</th>
+                      <th data-label="进度" class="sortable">进度 <span class="sort">↕</span></th>
+                      <th data-label="状态">状态</th>
+                      <th class="col-action" data-label="操作">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-selectable data-goto="p3">
+                      <td><label class="check"><input type="checkbox"><span class="box"></span></label></td>
+                      <td data-label="任务"><div class="cell-main"><span class="t">第三章 一元一次方程</span><span class="s">32 人已提交 / 共 45 人</span></div></td>
+                      <td data-label="班级">初三(2)班</td>
+                      <td data-label="截止" class="num">09-06</td>
+                      <td data-label="进度"><div class="row" style="gap:8px"><div class="progress grow" style="max-width:88px"><div class="bar" style="width:71%"></div></div><span class="xs num">71%</span></div></td>
+                      <td data-label="状态"><span class="tag tag-strong">进行中</span></td>
+                      <td class="col-action" data-label="操作">
+                        <button class="btn btn-sm btn-ghost" data-goto="p3">详情</button>
+                        <button class="btn btn-sm btn-ghost" data-drawer-open="#d-detail">快看</button>
+                        <button class="btn btn-sm btn-ghost" data-modal-open="#m-delete">删除</button>
+                      </td>
+                    </tr>
+                    <tr data-selectable data-goto="p3">
+                      <td><label class="check"><input type="checkbox"><span class="box"></span></label></td>
+                      <td data-label="任务"><div class="cell-main"><span class="t">期中模拟卷（二）</span><span class="s">45 人已提交 / 共 45 人</span></div></td>
+                      <td data-label="班级">初三(1)班</td>
+                      <td data-label="截止" class="num">09-04</td>
+                      <td data-label="进度"><div class="row" style="gap:8px"><div class="progress grow" style="max-width:88px"><div class="bar" style="width:100%"></div></div><span class="xs num">100%</span></div></td>
+                      <td data-label="状态"><span class="tag">待批改</span></td>
+                      <td class="col-action" data-label="操作">
+                        <button class="btn btn-sm btn-ghost" data-goto="p3">详情</button>
+                        <button class="btn btn-sm btn-ghost" data-drawer-open="#d-detail">快看</button>
+                        <button class="btn btn-sm btn-ghost" data-modal-open="#m-delete">删除</button>
+                      </td>
+                    </tr>
+                    <tr data-selectable data-goto="p3">
+                      <td><label class="check"><input type="checkbox"><span class="box"></span></label></td>
+                      <td data-label="任务"><div class="cell-main"><span class="t">二次函数预习作业</span><span class="s">0 人已提交 / 共 45 人</span></div></td>
+                      <td data-label="班级">初三(3)班</td>
+                      <td data-label="截止" class="num">09-10</td>
+                      <td data-label="进度"><div class="row" style="gap:8px"><div class="progress grow" style="max-width:88px"><div class="bar" style="width:0%"></div></div><span class="xs num">0%</span></div></td>
+                      <td data-label="状态"><span class="tag tag-danger">已逾期</span></td>
+                      <td class="col-action" data-label="操作">
+                        <button class="btn btn-sm btn-ghost" data-goto="p3">详情</button>
+                        <button class="btn btn-sm btn-ghost" data-drawer-open="#d-detail">快看</button>
+                        <button class="btn btn-sm btn-ghost" data-modal-open="#m-delete">删除</button>
+                      </td>
+                    </tr>
+                    <tr class="is-disabled" data-goto="p3">
+                      <td><label class="check is-disabled"><input type="checkbox" disabled><span class="box"></span></label></td>
+                      <td data-label="任务"><div class="cell-main"><span class="t">上学期期末卷（已归档）</span><span class="s">归档后不可编辑</span></div></td>
+                      <td data-label="班级">初二(4)班</td>
+                      <td data-label="截止" class="num">01-18</td>
+                      <td data-label="进度"><div class="row" style="gap:8px"><div class="progress grow" style="max-width:88px"><div class="bar" style="width:100%"></div></div><span class="xs num">100%</span></div></td>
+                      <td data-label="状态"><span class="tag">已归档</span></td>
+                      <td class="col-action" data-label="操作"><button class="btn btn-sm btn-ghost" disabled>详情</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-foot">
+                <span class="check"><label class="check" data-check-all><input type="checkbox"><span class="box"></span><span class="sm">全选</span></label></span>
+                <span>共 128 条，当前 1-4</span>
+                <div class="spacer"></div>
+                <div class="pagination">
+                  <button class="pg pg-ghost" disabled>上一页</button>
+                  <button class="pg is-active">1</button>
+                  <button class="pg">2</button>
+                  <button class="pg">3</button>
+                  <button class="pg">…</button>
+                  <button class="pg">32</button>
+                  <button class="pg pg-ghost">下一页</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 面板：空状态 -->
+          <div data-tab-pane="todo" class="tab-pane">
+            <div class="empty">
+              <span class="e-ico" data-icon="inbox" data-icon-size="40"></span>
+              <div class="e-title">暂无待完成任务</div>
+              <div class="e-desc">当前筛选条件下没有待完成的任务，换个条件或新建一个任务试试。</div>
+              <button class="btn btn-primary" style="margin-top:8px" data-modal-open="#m-create">新建任务</button>
+            </div>
+          </div>
+
+          <!-- Tab 面板：加载骨架 -->
+          <div data-tab-pane="doing" class="tab-pane">
+            <div class="stack" style="padding:16px">
+              <div class="row-md"><div class="skeleton sk-avatar"></div><div class="grow stack-sm"><div class="skeleton sk-line" style="width:40%"></div><div class="skeleton sk-line" style="width:70%"></div></div></div>
+              <div class="row-md"><div class="skeleton sk-avatar"></div><div class="grow stack-sm"><div class="skeleton sk-line" style="width:32%"></div><div class="skeleton sk-line" style="width:64%"></div></div></div>
+              <div class="row-md"><div class="skeleton sk-avatar"></div><div class="grow stack-sm"><div class="skeleton sk-line" style="width:48%"></div><div class="skeleton sk-line" style="width:56%"></div></div></div>
+              <p class="xs center" style="margin-top:8px">加载态（Skeleton）：真实数据返回前占位，避免布局跳动</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="anno">
+          <b>响应式说明：</b>桌面/平板为完整表格；宽度 ≤767px 时表格自动转为卡片列表（表头变为行内 label），侧边导航收进抽屉，底部出现标签栏。
+        </div>
+      </div>
+
+      <nav class="tabbar">
+        <a class="tb is-active" data-goto="p2"><span data-icon="list"></span>任务</a>
+        <a class="tb" data-goto="p4"><span data-icon="grid"></span>看板</a>
+        <a class="tb" data-toast="消息中心"><span data-icon="bell"></span>消息</a>
+        <a class="tb" data-goto="p9"><span data-icon="user"></span>我的</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     P3 · 任务详情
+     ================================================================== -->
+<section class="page" id="p3" data-pid="P3" data-title="任务详情">
+  <div class="browser-bar">
+    <button class="bb-btn" data-back title="返回"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+    <span class="bb-id">P3</span><span class="bb-url"></span>
+  </div>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar3">
+      <div class="sb-brand"><span data-icon="grid"></span> 学习任务</div>
+      <div class="sb-body"><div class="nav">
+        <a class="nav-item" data-goto="p2"><span data-icon="list"></span> 任务列表</a>
+        <a class="nav-item is-active" data-goto="p3"><span data-icon="inbox"></span> 任务详情</a>
+        <a class="nav-item" data-goto="p4"><span data-icon="grid"></span> 数据看板</a>
+      </div></div>
+    </aside>
+    <div class="scrim" data-close></div>
+    <div class="main">
+      <header class="topbar">
+        <button class="btn btn-ghost btn-icon hamburger" data-sidebar-open="#sidebar3" aria-label="菜单"><span data-icon="menu"></span></button>
+        <div class="breadcrumb">
+          <a data-goto="p2">任务列表</a><span class="sep">/</span><span class="current">任务详情</span>
+        </div>
+        <div class="tb-right">
+          <button class="btn" data-goto="p2">返回</button>
+          <button class="btn btn-primary" data-loading="1000" data-loading-done="已保存">保存</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="grid">
+          <div class="col-8 stack">
+            <div class="card">
+              <div class="card-hd"><span class="card-title">基本信息</span><div class="spacer"></div><span class="tag">编辑中</span></div>
+              <div class="card-bd stack">
+                <div class="field">
+                  <label class="field-label">任务名称 <span class="req">*</span></label>
+                  <input class="input" value="第三章 一元一次方程" data-required>
+                  <span class="field-error"></span>
+                </div>
+                <div class="auto-2">
+                  <div class="field">
+                    <label class="field-label">所属班级 <span class="req">*</span></label>
+                    <div class="select">
+                      <button type="button" class="select-trigger"><span class="sel-val">初三(2)班</span><span class="caret" data-icon="chevronDown" data-icon-size="12"></span></button>
+                      <div class="select-menu">
+                        <div class="opt is-selected" data-value="1" data-label="初三(2)班">初三(2)班</div>
+                        <div class="opt" data-value="2" data-label="初三(1)班">初三(1)班</div>
+                        <div class="opt" data-value="3" data-label="初三(3)班">初三(3)班</div>
+                      </div>
+                    </div>
+                    <span class="field-error"></span>
+                  </div>
+                  <div class="field">
+                    <label class="field-label">截止时间</label>
+                    <div class="input-affix">
+                      <input class="input" value="2026-09-06 18:00">
+                      <span class="affix affix-right" data-icon="calendar" data-icon-size="14"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="field-label">任务说明</label>
+                  <textarea class="textarea">完成课本 P42-P45 练习题，重点掌握移项与合并同类项。</textarea>
+                  <span class="field-hint">支持纯文本，最多 500 字</span>
+                </div>
+                <div class="field">
+                  <label class="field-label">附件</label>
+                  <div class="upload"><span data-icon="upload" data-icon-size="20"></span><span>点击或拖拽上传（原型占位）</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-hd"><span class="card-title">提交情况</span><div class="spacer"></div><span class="xs num">32 / 45 已提交</span></div>
+              <div class="card-bd stack-sm">
+                <div class="list">
+                  <div class="list-item">
+                    <span class="avatar avatar-sm">张</span>
+                    <div class="grow"><div class="sm strong">张小明</div><div class="xs">09-05 21:14 提交</div></div>
+                    <span class="tag">待批改</span>
+                    <button class="btn btn-sm" data-toast="打开批改面板">批改</button>
+                  </div>
+                  <div class="list-item">
+                    <span class="avatar avatar-sm">王</span>
+                    <div class="grow"><div class="sm strong">王芳</div><div class="xs">09-05 19:02 提交</div></div>
+                    <span class="tag tag-strong">已批改 92 分</span>
+                    <button class="btn btn-sm" data-toast="查看批改详情">查看</button>
+                  </div>
+                  <div class="list-item is-disabled">
+                    <span class="avatar avatar-sm">李</span>
+                    <div class="grow"><div class="sm">李雷</div><div class="xs">未提交（已逾期 2 天）</div></div>
+                    <span class="tag tag-danger">逾期</span>
+                    <button class="btn btn-sm" disabled>提醒</button>
+                  </div>
+                </div>
+                <div class="row" style="justify-content:flex-end"><button class="btn btn-sm btn-secondary" data-toast="催交提醒已发送给 13 人">一键催交</button></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4 stack">
+            <div class="card">
+              <div class="card-hd"><span class="card-title">状态</span></div>
+              <div class="card-bd stack">
+                <div class="steps">
+                  <div class="step is-done"><span class="dot">✓</span><span class="txt">已发布</span></div>
+                  <div class="step is-active"><span class="dot">2</span><span class="txt">进行中</span></div>
+                  <div class="step"><span class="dot">3</span><span class="txt">已截止</span></div>
+                  <div class="step"><span class="dot">4</span><span class="txt">已归档</span></div>
+                </div>
+                <div class="divider"></div>
+                <div class="field-inline" style="justify-content:space-between">
+                  <span class="sm">允许补交</span>
+                  <label class="switch"><input type="checkbox" checked><span class="track"></span></label>
+                </div>
+                <div class="field-inline" style="justify-content:space-between">
+                  <span class="sm">自动批改客观题</span>
+                  <label class="switch"><input type="checkbox"><span class="track"></span></label>
+                </div>
+                <div class="field-inline" style="justify-content:space-between">
+                  <span class="sm muted">发布到家长端（已锁定）</span>
+                  <label class="switch is-disabled"><input type="checkbox" checked disabled><span class="track"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-hd"><span class="card-title">危险操作</span></div>
+              <div class="card-bd stack-sm">
+                <p class="xs">删除后学生端将不可见，且不可恢复。</p>
+                <button class="btn btn-danger btn-block" data-modal-open="#m-delete"><span data-icon="trash" data-icon-size="14"></span> 删除任务</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     P4 · 数据看板
+     ================================================================== -->
+<section class="page" id="p4" data-pid="P4" data-title="数据看板">
+  <div class="browser-bar">
+    <button class="bb-btn" data-back title="返回"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+    <span class="bb-id">P4</span><span class="bb-url"></span>
+  </div>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar4">
+      <div class="sb-brand"><span data-icon="grid"></span> 学习任务</div>
+      <div class="sb-body"><div class="nav">
+        <a class="nav-item" data-goto="p2"><span data-icon="list"></span> 任务列表</a>
+        <a class="nav-item is-active" data-goto="p4"><span data-icon="grid"></span> 数据看板</a>
+        <a class="nav-item" data-goto="p0"><span data-icon="arrowRight"></span> 流程总览</a>
+      </div></div>
+    </aside>
+    <div class="scrim" data-close></div>
+    <div class="main">
+      <header class="topbar">
+        <button class="btn btn-ghost btn-icon hamburger" data-sidebar-open="#sidebar4" aria-label="菜单"><span data-icon="menu"></span></button>
+        <span class="tb-title">数据看板</span>
+        <div class="tb-right">
+          <div class="tabs" style="border-bottom:0">
+            <button class="tab is-active" data-tab="w">本周</button>
+            <button class="tab" data-tab="m">本月</button>
+            <button class="tab" data-tab="y">全年</button>
+          </div>
+        </div>
+      </header>
+      <div class="content stack">
+        <div class="auto-3">
+          <div class="stat"><div class="stat-label">任务发布数</div><div class="stat-value">42</div><div class="stat-delta">环比 +18%</div></div>
+          <div class="stat"><div class="stat-label">平均提交时长</div><div class="stat-value">3.2h</div><div class="stat-delta">环比 -0.4h</div></div>
+          <div class="stat"><div class="stat-label">逾期率</div><div class="stat-value">7.4%</div><div class="progress progress-danger" style="margin-top:8px"><div class="bar" style="width:7.4%"></div></div></div>
+        </div>
+        <div class="grid">
+          <div class="col-8">
+            <div class="card">
+              <div class="card-hd"><span class="card-title">提交趋势</span><div class="spacer"></div><span class="xs">柱形图占位</span></div>
+              <div class="card-bd">
+                <div class="ph-img" style="height:220px"><span>柱状图 / 折线图占位</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-hd"><span class="card-title">班级排名</span></div>
+              <div class="card-bd"><div class="ph-img" style="height:220px"><span>排行榜占位</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     P9 · 组件与状态规范
+     ================================================================== -->
+<section class="page" id="p9" data-pid="P9" data-title="组件与状态规范">
+  <div class="browser-bar">
+    <button class="bb-btn" data-back title="返回"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4l-4 4 4 4"/></svg></button>
+    <span class="bb-id">P9</span><span class="bb-url"></span>
+  </div>
+  <div class="content stack-lg">
+    <div><h1 class="h1">组件与状态规范</h1><p class="xs" style="margin-top:4px">本页即设计系统的活文档，评审时可直接对照。</p></div>
+
+    <div class="card">
+      <div class="card-hd"><span class="card-title">配色图例</span></div>
+      <div class="card-bd stack">
+        <div class="legend">
+          <span class="lg"><i class="sw sw-fill"></i> 主操作 / 选中（#2b2b2b）</span>
+          <span class="lg"><i class="sw"></i> 默认描边 + 白底（#c9c9c9）</span>
+          <span class="lg"><i class="sw sw-disabled"></i> 禁用（#e2e2e2）</span>
+          <span class="lg"><i class="sw sw-danger"></i> 警告 / 错误 / 破坏性（#d93025）</span>
+        </div>
+        <div class="anno"><b>规则：</b>除 <span class="tag tag-danger">红色</span> 外不引入任何色相。层级靠「填充深浅 + 描边深浅 + 字重」表达，而非颜色。</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-hd"><span class="card-title">按钮</span><div class="spacer"></div><span class="xs">h32 · r2 · 1px 描边</span></div>
+          <div class="card-bd stack-sm">
+            <div class="row wrap"><button class="btn btn-primary">主按钮</button><button class="btn btn-secondary">次按钮</button><button class="btn">默认</button><button class="btn btn-ghost">文字</button></div>
+            <div class="row wrap"><button class="btn btn-danger">危险（描边红）</button><button class="btn btn-danger-solid">危险（实底红）</button></div>
+            <div class="row wrap"><button class="btn btn-sm">小 28</button><button class="btn">中 32</button><button class="btn btn-lg">大 40</button></div>
+            <div class="row wrap"><button class="btn" disabled>禁用</button><button class="btn btn-primary" disabled>禁用主</button><button class="btn" data-loading="1500">点击看 loading</button></div>
+            <div class="row wrap"><button class="btn btn-icon" data-icon="plus" aria-label="新增"></button><button class="btn btn-icon btn-sm" data-icon="edit" aria-label="编辑"></button><button class="btn btn-icon" data-icon="trash" aria-label="删除"></button></div>
+            <div class="btn-group"><button class="btn is-selected">列表</button><button class="btn">看板</button><button class="btn">日历</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <div class="card-hd"><span class="card-title">表单</span><div class="spacer"></div><span class="xs">h32 · r2 · 聚焦 2px 外环</span></div>
+          <div class="card-bd stack-sm">
+            <input class="input" placeholder="默认输入框（hover 我）">
+            <input class="input is-readonly" placeholder="只读" readonly value="只读内容">
+            <input class="input" placeholder="禁用" disabled value="禁用内容">
+            <div class="field has-error">
+              <label class="field-label">错误态 <span class="req">*</span></label>
+              <input class="input" value="格式不正确">
+              <span class="field-error">请输入正确的格式</span>
+            </div>
+            <div class="input-affix"><span class="affix" data-icon="search" data-icon-size="14"></span><input class="input" placeholder="带前缀图标的搜索框"></div>
+            <div class="select">
+              <button type="button" class="select-trigger"><span class="sel-val is-placeholder">下拉框（点击展开）</span><span class="caret" data-icon="chevronDown" data-icon-size="12"></span></button>
+              <div class="select-menu">
+                <div class="opt is-selected" data-value="1" data-label="选项一">选项一</div>
+                <div class="opt" data-value="2" data-label="选项二">选项二</div>
+                <div class="opt is-disabled" data-value="3" data-label="禁用项">禁用项</div>
+              </div>
+            </div>
+            <textarea class="textarea" placeholder="多行文本域"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <div class="card-hd"><span class="card-title">选择控件</span></div>
+          <div class="card-bd stack-sm">
+            <div class="check-group">
+              <label class="check"><input type="checkbox" checked><span class="box"></span>选中</label>
+              <label class="check"><input type="checkbox"><span class="box"></span>未选</label>
+              <label class="check"><input type="checkbox" class="indet" checked><span class="box"></span>半选</label>
+              <label class="check is-disabled"><input type="checkbox" disabled><span class="box"></span>禁用</label>
+            </div>
+            <div class="check-group">
+              <label class="check radio"><input type="radio" name="r1" checked><span class="box"></span>单选 A</label>
+              <label class="check radio"><input type="radio" name="r1"><span class="box"></span>单选 B</label>
+              <label class="check radio is-disabled"><input type="radio" name="r1" disabled><span class="box"></span>禁用</label>
+            </div>
+            <div class="row wrap">
+              <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="sm">开</span></label>
+              <label class="switch"><input type="checkbox"><span class="track"></span><span class="sm">关</span></label>
+              <label class="switch is-disabled"><input type="checkbox" disabled><span class="track"></span><span class="sm">禁用</span></label>
+            </div>
+            <div class="row wrap"><span class="tag">标签</span><span class="tag tag-strong">强调</span><span class="tag tag-solid">实底</span><span class="tag tag-danger">异常</span><span class="badge-dot">3</span><span class="badge-dot badge-dot-danger">!</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <div class="card-hd"><span class="card-title">导航与反馈</span></div>
+          <div class="card-bd stack-sm">
+            <div class="tabs" data-tab-group>
+              <button class="tab is-active" data-tab="a">标签一</button><button class="tab" data-tab="b">标签二</button><button class="tab is-disabled">禁用</button>
+            </div>
+            <div data-tab-pane="a" class="tab-pane is-active"><div class="ph-line" style="width:60%"></div><div class="ph-line" style="width:80%;margin-top:8px"></div></div>
+            <div data-tab-pane="b" class="tab-pane"><div class="ph-line" style="width:40%"></div></div>
+            <div class="breadcrumb"><a>一级</a><span class="sep">/</span><a>二级</a><span class="sep">/</span><span class="current">当前</span></div>
+            <div class="steps"><div class="step is-done"><span class="dot">✓</span><span class="txt">已完成</span></div><div class="step is-active"><span class="dot">2</span><span class="txt">进行中</span></div><div class="step"><span class="dot">3</span><span class="txt">未开始</span></div></div>
+            <div class="row wrap">
+              <button class="btn btn-secondary" data-toast="这是一条普通提示">Toast</button>
+              <button class="btn btn-secondary" data-toast="操作失败，请重试" data-toast-type="error">Toast 错误</button>
+              <button class="btn btn-secondary" data-modal-open="#m-create">弹窗</button>
+              <button class="btn btn-secondary" data-drawer-open="#d-detail">抽屉</button>
+            </div>
+            <div class="alert"><span class="a-ico" data-icon="info"></span><div><span class="strong">普通提示</span>：用于中性说明。</div></div>
+            <div class="alert alert-error"><span class="a-ico" data-icon="warn"></span><div><span class="strong">错误提示</span>：红色仅用于此。</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card">
+          <div class="card-hd"><span class="card-title">尺寸与间距标尺</span><div class="spacer"></div><span class="xs">4pt 基准</span></div>
+          <div class="card-bd stack-sm">
+            <div class="row wrap" style="gap:8px;align-items:flex-end">
+              <div class="center"><div style="width:4px;height:32px;background:var(--fill-900)"></div><div class="xs-sm">4</div></div>
+              <div class="center"><div style="width:8px;height:32px;background:var(--fill-900)"></div><div class="xs-sm">8</div></div>
+              <div class="center"><div style="width:12px;height:32px;background:var(--fill-900)"></div><div class="xs-sm">12</div></div>
+              <div class="center"><div style="width:16px;height:32px;background:var(--fill-900)"></div><div class="xs-sm">16</div></div>
+              <div class="center"><div style="width:24px;height:32px;background:var(--fill-900)"></div><div class="xs-sm">24</div></div>
+              <div class="center"><div style="width:32px;height:32px;background:var(--fill-900)"></div><div class="xs-sm">32</div></div>
+              <div class="center"><div style="width:48px;height:32px;background:var(--fill-900)"></div><div class="xs-sm">48</div></div>
+            </div>
+            <div class="anno"><b>栅格：</b>12 栏，槽宽 16px；内容区左右内边距 桌面 24 / 平板 16 / 手机 12。控件高度三档 28 / 32 / 40（移动端触控档 32 / 40 / 44）。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /app -->
+</div><!-- /stage -->
+
+<!-- ==================== 浮层 M1：新建任务（含校验） ==================== -->
+<div class="mask" id="m-create">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-hd">
+      <span class="modal-title">新建任务</span>
+      <button class="modal-close" data-close aria-label="关闭"><span data-icon="close" data-icon-size="14"></span></button>
+    </div>
+    <form data-validate data-success="任务创建成功" data-success-close="#m-create">
+      <div class="modal-bd stack">
+        <div class="field">
+          <label class="field-label">任务名称 <span class="req">*</span></label>
+          <input class="input" placeholder="请输入任务名称" data-required>
+          <span class="field-error"></span>
+        </div>
+        <div class="auto-2">
+          <div class="field">
+            <label class="field-label">所属班级 <span class="req">*</span></label>
+            <div class="select" data-required>
+              <button type="button" class="select-trigger"><span class="sel-val is-placeholder">请选择班级</span><span class="caret" data-icon="chevronDown" data-icon-size="12"></span></button>
+              <div class="select-menu">
+                <div class="opt is-selected is-placeholder" data-value="" data-label="请选择班级">请选择班级</div>
+                <div class="opt" data-value="1" data-label="初三(1)班">初三(1)班</div>
+                <div class="opt" data-value="2" data-label="初三(2)班">初三(2)班</div>
+              </div>
+            </div>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label class="field-label">截止时间 <span class="req">*</span></label>
+            <div class="input-affix"><input class="input" placeholder="YYYY-MM-DD HH:mm" data-required><span class="affix affix-right" data-icon="calendar" data-icon-size="14"></span></div>
+            <span class="field-error"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">任务类型 <span class="req">*</span></label>
+          <div class="check-group">
+            <label class="check radio"><input type="radio" name="tt" checked><span class="box"></span>日常练习</label>
+            <label class="check radio"><input type="radio" name="tt"><span class="box"></span>考试</label>
+            <label class="check radio"><input type="radio" name="tt"><span class="box"></span>预习</label>
+          </div>
+          <span class="field-error"></span>
+        </div>
+        <div class="field">
+          <label class="field-label">任务说明</label>
+          <textarea class="textarea" placeholder="选填，最多 500 字"></textarea>
+        </div>
+        <div class="anno"><b>校验规则：</b>提交时逐项校验，错误字段标红 + 下方红字提示，并自动聚焦首个错误项；修正输入即清除错误态。</div>
+      </div>
+      <div class="modal-ft">
+        <button class="btn" type="button" data-close>取消</button>
+        <button class="btn btn-primary" type="submit">创建</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ==================== 浮层 M2：删除确认（危险） ==================== -->
+<div class="mask" id="m-delete">
+  <div class="modal modal-sm" role="dialog" aria-modal="true">
+    <div class="modal-hd">
+      <span class="modal-title" style="color:var(--danger)">删除确认</span>
+      <button class="modal-close" data-close aria-label="关闭"><span data-icon="close" data-icon-size="14"></span></button>
+    </div>
+    <div class="modal-bd stack">
+      <div class="alert alert-error">
+        <span class="a-ico" data-icon="warn"></span>
+        <div>确定删除「<span class="strong">第三章 一元一次方程</span>」吗？删除后学生端不可见且<b>不可恢复</b>。</div>
+      </div>
+      <p class="xs">共有 32 份学生提交记录将一并删除。</p>
+    </div>
+    <div class="modal-ft">
+      <button class="btn" data-close>取消</button>
+      <button class="btn btn-danger-solid" data-close data-toast="已删除：第三章 一元一次方程" data-toast-type="error">确认删除</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 抽屉 D1：快速查看 ==================== -->
+<aside class="drawer" id="d-detail">
+  <div class="modal-hd">
+    <span class="modal-title">快速查看</span>
+    <button class="modal-close" data-close aria-label="关闭"><span data-icon="close" data-icon-size="14"></span></button>
+  </div>
+  <div class="modal-bd stack">
+    <div>
+      <div class="h3">第三章 一元一次方程</div>
+      <div class="xs" style="margin-top:4px">初三(2)班 · 截止 09-06 18:00</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stack-sm">
+      <div class="row" style="justify-content:space-between"><span class="xs">提交进度</span><span class="sm strong num">32 / 45</span></div>
+      <div class="progress"><div class="bar" style="width:71%"></div></div>
+    </div>
+    <div class="well stack-sm">
+      <div class="row" style="justify-content:space-between"><span class="xs">平均用时</span><span class="sm">42 分钟</span></div>
+      <div class="row" style="justify-content:space-between"><span class="xs">平均分</span><span class="sm">86.5</span></div>
+      <div class="row" style="justify-content:space-between"><span class="xs">逾期人数</span><span class="sm" style="color:var(--danger)">3</span></div>
+    </div>
+    <div class="ph-img" style="height:120px"><span>分布图占位</span></div>
+  </div>
+  <div class="modal-ft">
+    <button class="btn" data-close>关闭</button>
+    <button class="btn btn-primary" data-close data-goto="p3">查看完整详情</button>
+  </div>
+</aside>
+
+<script src="lofi.js"></script>
+<script>
+  // 半选示例
+  document.querySelectorAll('.indet').forEach(el => el.indeterminate = true);
+  // 密码可见切换
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-toggle-pw]');
+    if (!b) return;
+    const input = b.parentElement.querySelector('input');
+    if (input) input.type = input.type === 'password' ? 'text' : 'password';
+  });
+</script>
+</body>
+</html>

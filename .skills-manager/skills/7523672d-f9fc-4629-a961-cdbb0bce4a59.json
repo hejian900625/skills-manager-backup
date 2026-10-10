@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "7523672d-f9fc-4629-a961-cdbb0bce4a59",
+  "path": "web-dev-skill",
+  "path_key": "web-dev-skill",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

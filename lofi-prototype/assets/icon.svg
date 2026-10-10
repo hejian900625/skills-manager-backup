@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-label="Lo-Fi Wireframe Prototype">
+  <title>PM线稿原型 · Lo-Fi Wireframe Prototype</title>
+
+  <!-- 画布底色（透明版会移除此层） -->
+  <rect id="bg" width="512" height="512" fill="#FFFFFF"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 线稿页面外框：粗描边体现「线稿」 -->
+    <rect x="88" y="72" width="336" height="368" rx="32" fill="#FFFFFF" stroke="#111111" stroke-width="16"/>
+
+    <!-- 内容占位块（wireframe 通用语汇：模块 / 图片位） -->
+    <rect x="132" y="160" width="248" height="96" rx="8" fill="#3D3D3D"/>
+
+    <!-- 文本行占位 -->
+    <rect x="132" y="288" width="248" height="20" rx="10" fill="#D0D0D0"/>
+    <rect x="132" y="332" width="160" height="20" rx="10" fill="#D0D0D0"/>
+
+    <!-- 唯一红色：待确认 / 校验警示角标 -->
+    <circle cx="424" cy="72" r="30" fill="#D93025" stroke="#FFFFFF" stroke-width="12"/>
+
+  </g>
+</svg>

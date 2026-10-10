@@ -13,5 +13,5 @@
   "description_en": "通过 wechat-cli 读取和分析微信聊天记录。当用户想查看、搜索、导出或分析微信消息、联系人、收藏时调用此技能。",
   "installs": 25117,
   "installedContentHash": "sha256:321b566f67439b520ab8c03020d2af6789440f08e23f4a7d816e9e435631cb4c",
-  "iconDownloadFailedAt": 1791420634757
+  "iconDownloadFailedAt": 1791520694479
 }

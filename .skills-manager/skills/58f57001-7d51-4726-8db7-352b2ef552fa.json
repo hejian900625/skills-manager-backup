@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "58f57001-7d51-4726-8db7-352b2ef552fa",
+  "path": "chat-handoff",
+  "path_key": "chat-handoff",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

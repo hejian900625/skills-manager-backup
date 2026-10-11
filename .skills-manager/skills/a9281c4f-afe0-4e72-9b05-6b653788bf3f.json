@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "a9281c4f-afe0-4e72-9b05-6b653788bf3f",
+  "path": "github-repo-fetch-windows",
+  "path_key": "github-repo-fetch-windows",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

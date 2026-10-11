@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "fcda0c74-ccaf-423f-ad12-a149b39e8687",
+  "path": "bilibili-course-vetting",
+  "path_key": "bilibili-course-vetting",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

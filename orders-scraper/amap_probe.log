@@ -1,0 +1,58 @@
+
+===== PC_首页 =====
+  url   : https://www.amap.com/ssr/search
+  title : 高德地图 - 精准专业的手机地图
+  html  : 651535B, 正文 336 字
+  内嵌  : 无
+  链接  : 24 个，命中关键词 0 个
+  正文  : 搜索地点、公交、地铁 驾车 公共交通 酒店 步行 美食 商场 加油 小区 景点 休闲娱乐 回家 去单位 收藏夹 广州 晴 21/32℃ 2 公里 反馈 路况 测距 地铁 分享 图层 3D 全屏 ©2026 高德 - GS(2025)5996号 - 甲测资字11112528 - 京ICP备2023020281号-12 - 京公网安备 11010502056787号帮助文档资质证照协议与声明开放平台新增地点意见反馈商户免费标注车机版高德社会责任网上有害信息举报涉未成年人举报算法推荐举报生活服务专项举报廉正举报 ⓘ 手机号码 短信登录 二维码登录 请按住滑块，拖动到最右边 发送验证码 立即登录 我已阅读并同意 《高德服务条款》《高德隐私权政策》；未注册的手机号将自动注册
+
+===== PC_足迹 =====
+  url   : https://www.amap.com/myfoot
+  title : 高德地图
+  html  : 508625B, 正文 385 字
+  内嵌  : 无
+  链接  : 31 个，命中关键词 0 个
+  正文  : 20 公里 ©2026 高德 - GS(2025)5996号 - 甲测资字11112528 - 京ICP备2023020281号-12 - 京公网安备 11010502056787号 | 资质证照 | 协议与声明 | 开放平台 | 新增地点 | 意见反馈 | 商户免费标注 | 车机版 | 高德社会责任 | 网上有害信息举报 | 涉未成年人举报 | 算法推荐举报 | 生活服务专项举报 | 廉正举报 卫星 路况 测距 地铁 全屏 更多 体验新版 新版上线，骑行路线来了 界面焕新，等你体验～ 立即体验 下载APP 移动端 扫码下载 高德地图 高德地图 哪儿都熟 北京 晴 13/26℃ ⓘ 手机号码 短信登录 二维码登录 发送验证码 立即登录 我已阅读并同意 《高德服务条款》《高德地图基本功能隐私政策》《高德账号服务个人信息处理规则》；未注册的手机号将自动注册
+
+===== PC_登录 =====
+  url   : https://login.amap.com/login?redirectUri=http%3A%2F%2Flogin.amap.com%2F
+  title : 数据质量监控平台
+  html  : 1757B, 正文 0 字
+  内嵌  : 无
+  链接  : 0 个，命中关键词 0 个
+
+===== H5_首页 =====
+  url   : https://m.amap.com/
+  title : 高德地图 - 精准专业的手机地图
+  html  : 1718347B, 正文 22 字
+  内嵌  : 无
+  链接  : 3 个，命中关键词 0 个
+  正文  : 地图 路线 附近 50 公里 打开高德APP
+
+===== H5_打车 =====
+  url   : https://m.amap.com/index/index/
+  title : 高德地图 - 精准专业的手机地图
+  html  : 1718352B, 正文 22 字
+  内嵌  : 无
+  链接  : 3 个，命中关键词 0 个
+  正文  : 地图 路线 附近 50 公里 打开高德APP
+
+===== 开放平台 =====
+  url   : https://lbs.amap.com/api/track/summary
+  title : 概述-猎鹰轨迹服务 | 高德地图API
+  html  : 295689B, 正文 3286 字
+  内嵌  : 无
+  链接  : 224 个，命中关键词 10 个
+     · 我的消息 -> https://console.amap.com/dev/message/inbox
+     · 猎鹰服务
+提供专业轨迹管理服务 -> https://lbs.amap.com/product/track-sdk
+     · 轨迹上传及管理 -> https://lbs.amap.com/api/track/lieying-kaifa/api/track-sdk
+     · 轨迹查询及纠偏 -> https://lbs.amap.com/api/track/lieying-kaifa/api/grasproad
+     · 轨迹自定义字段 -> https://lbs.amap.com/api/track/lieying-kaifa/api/trace-column
+     · 轨迹围栏管理 -> https://lbs.amap.com/api/track/lieying-kaifa/api/track_fence
+     · 轨迹收费计算 -> https://lbs.amap.com/api/track/lieying-kaifa/api/etc
+     · 轨迹行为分析 -> https://lbs.amap.com/api/track/lieying-kaifa/api/track_analysis
+     · 轨迹重合度分析 -> https://lbs.amap.com/api/track/lieying-kaifa/api/track_match
+     · 高德打车企业版 -> https://es.amap.com/
+  正文  : 控制台 登录 注册 产品介绍 产品介绍 高德开放平台产品介绍 查看全部文档 搜索定位 鸿蒙星河版定位SDK HOT 鸿蒙星河版定位SDK 搜索 HOT 位置、周边、行政区、ID等查询接口 API JS Android iOS 定位 HOT 基于LBS的定位服务 API Android iOS 地理/逆地理编码 位置名称与经纬度之间转换服务 API JS Android iOS 地理围栏 虚拟空间围栏服务 API Android iOS 天气查询 查询目标区域当前/未来天气 智能硬件定位 通过基站、Wifi获取位置信息 路线导航 鸿蒙星河版导航SDK NEW 鸿蒙星河版导航SDK 导航 HOT 轻松地在APP中加入导航能力 Android iOS 路线规划 HOT 提供步行、驾车等规划能力 API JS Android iOS 猎鹰服务 提供专业轨迹管理服务 API Android iOS 

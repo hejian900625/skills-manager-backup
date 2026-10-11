@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "928a98e7-923d-4c27-a657-f9d0230a0523",
+  "path": "orders-scraper",
+  "path_key": "orders-scraper",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

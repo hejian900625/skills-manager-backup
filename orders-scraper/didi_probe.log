@@ -1,0 +1,154 @@
+################ PC（桌面 UA）
+
+===== 滴滴出行PC官网
+  url    : https://www.didichuxing.com/
+  status : 200
+  final  : https://www.didichuxing.com/#/
+  title  : 滴滴出行
+  len    : 464 字
+  text   : MORE THAN A
+JOURNEY
+滴滴一下 美好出行
+前往滴滴升级官网
+滴滴官网已升级，请访问www.didiglobal.com了解更多业务信息。
+企业用车 不再繁琐
+滴滴快车 省时间给生活
+滴滴豪华车 新奢享主义出行
+礼橙专车 礼遇每一程
+客服热线
+司机客服热线 +86 400 0000 666
+乘客客服热线 +86 400 0000 999
+金融客服热线 +86 400 6080 966
+代驾客服热线 +86 400 7666 998
+其他业务热线 +86 400 0000 999-9
+联系我们司机加盟滴滴官网滴滴招聘
+©2012-2026 滴滴出行科技有限公司 增值电信业务经营许可证：津B2-20210022网络预约出租汽车经营许可证：津交运管许可出网字100001号 津ICP备15007503号-1 津公网安备 12010402001586号违法和不良信息/涉未成年有害信息
+  命中   : []
+
+===== 滴滴中国PC
+  url    : https://www.didi.com/
+  status : 200
+  final  : https://didi.co/filter/
+  title  : Digital Image Design Incorporated – Digital Image Design Incorporated
+  len    : 2667 字
+  text   : Skip to the content
+Digital Image Design Incorporated
+Home
+About
+Contact
+Digital Image Design Incorporated
+We invent information products—or improve yours.
+We make the value of your data or service obvious, needed.
+We do it by applying a rigorous, behavior-optimizing kind of interface design: our own fundamentally better process.
+Clients report little or no training costs or support costs, quicker
+  命中   : []
+
+===== 滴滴国际官网
+  url    : https://web.didiglobal.com/
+  status : 200
+  final  : https://web.didiglobal.com/
+  title  : DiDi Global - The World's Leader in Mobility Technology
+  len    : 265 字
+  text   : About DiDi
+Select your Country
+Loading...
+Loading...
+Loading...
+Loading...
+Privacy Policies
+Argentina • Australia • Brazil • Chile • Colombia • Costa Rica • DiDi Global • Ecuador • Egypt • Japan • Mexico • New Zealand • Panama • Peru • Dominican Republic
+Loading...
+  命中   : []
+
+===== 滴滴PC-我的(猜)
+  url    : https://www.didichuxing.com/order/
+  status : 404
+  final  : https://www.didichuxing.com/order/
+  title  : 404 Not Found
+  len    : 275 字
+  text   : 404 Not Found
+Sorry for the inconvenience.
+Please report this message and include the following information to us.
+Thank you very much!
+URL:	http://www.didichuxing.com:8000/order/
+Server:	cms-web-sf-96e9c-0.docker.ys
+Date:	2026/10/10 22:14:07
+Powered by Tengine/2.3.3
+tengine
+  命中   : []
+
+
+################ H5（移动 UA）
+
+===== 滴滴公共H5
+  url    : https://common.didiglobal.com/
+  status : 404
+  final  : https://common.didiglobal.com/
+  title  : 404 Not Found
+  len    : 27 字
+  text   : 404 Not Found
+router/2.43.3
+  命中   : []
+
+===== 滴滴H5-订单(猜1)
+  url    : https://common.didiglobal.com/bottom/orderList
+  status : 404
+  final  : https://common.didiglobal.com/bottom/orderList
+  title  : 404 Not Found
+  len    : 27 字
+  text   : 404 Not Found
+router/2.43.3
+  命中   : []
+
+===== 滴滴H5-订单(猜2)
+  url    : https://common.didiglobal.com/bottom/mine
+  status : 404
+  final  : https://common.didiglobal.com/bottom/mine
+  title  : 404 Not Found
+  len    : 27 字
+  text   : 404 Not Found
+router/2.43.3
+  命中   : []
+
+===== 滴滴H5(猜3)
+  url    : https://common.didiglobal.com/bottom/list
+  status : 404
+  final  : https://common.didiglobal.com/bottom/list
+  title  : 404 Not Found
+  len    : 27 字
+  text   : 404 Not Found
+router/2.43.3
+  命中   : []
+
+===== DidiGlobal-H5
+  url    : https://h5.didiglobal.com/
+  status : 400
+  final  : https://h5.didiglobal.com/
+  title  : 
+  len    : 349 字
+  text   : This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<Error>
+<Code>InvalidRequest</Code>
+<Message>The authorization mechanism you have provided is not supported. Please use AWS4-HMAC-SHA256.</Message>
+<Resource>/</Resource>
+<RequestId>0a9d382d6aca4846073db40503ad8d02</RequestId>
+</Error>
+  命中   : []
+
+===== didiglobal-m
+  url    : https://m.didiglobal.com/
+  status : 404
+  final  : https://m.didiglobal.com/
+  title  : 
+  len    : 18 字
+  text   : 404 page not found
+  命中   : []
+
+===== 滴滴静态CDN
+  url    : https://dpubstatic.udache.com/
+  status : 404
+  final  : https://dpubstatic.udache.com/
+  title  : 
+  len    : 18 字
+  text   : 404 page not found
+  命中   : []

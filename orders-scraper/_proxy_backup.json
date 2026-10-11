@@ -1,0 +1,1 @@
+{"ProxyEnable": 0, "ProxyServer": "https=http://127.0.0.1:31181", "ProxyOverride": "localhost;127.*;<local>"}

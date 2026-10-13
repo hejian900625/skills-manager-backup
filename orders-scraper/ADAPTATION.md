@@ -236,6 +236,32 @@
 - 已离线用 `pdd_rawdata.json` 回归：10 条全部正确（合计 ¥96.82，状态 交易成功 8 / 已取消 1 / 退款成功 1）。
 - 与京东同款坑：**Playwright 里等响应必须用 `page.wait_for_timeout()`，裸 `time.sleep()` 不驱动事件循环**。
 
+## 7. 与个人站数据管线对接（2026-10-13）
+
+个人站（D:\\project\\personal-site）的 `scripts/fetch_shopping.py` 直接吃 `D:\\site_sources\\orders`
+目录下的订单 xlsx/csv，按文件名关键词（jd/京东、pdd/拼多多、taobao/淘宝/天猫）分流，
+表头同义词模糊匹配，隐私列（收货人/收货地址/手机号/快递单号）自动剔除。
+
+**改动**：京东/拼多多/淘宝三个 export 脚本的订单表格输出目录从 `数据结果/` 改到
+`D:\\site_sources\\orders`（用环境变量 `ORDERS_DIR` 覆盖，与 fetch_shopping 同名打通）；
+登录态/日志/原始接口响应仍留 `数据结果/`（不混进数据目录）。
+
+- `jd_export.py`：xlsx/csv 落 `ORDERS_DIR/jd_orders_<date>.{xlsx,csv}`（列名与 fetch_shopping 京东期望完全一致）。
+- `pdd_export.py`：xlsx/csv 落 `ORDERS_DIR/pdd_orders_<date>.{xlsx,csv}`。
+- `taobao_export.py`：捕获的下载落 `ORDERS_DIR/`（淘宝侧仍由用户点导出按钮触发；若淘宝给 `.xls`，fetch_shopping 暂只吃 `.xlsx/.csv`，需手动另存为 `.xlsx`）。
+
+**效果**：跑完 export 后，个人站侧 `python scripts/refresh_content.py --only=shopping`
+（或整跑）即可直接刷新 `backend/content/shopping.json`，**手动 copy 进 orders 目录这一步被消除**。
+
+**验证（2026-10-13，真实文件）**：`D:\\site_sources\\orders` 现存 京东_jd_orders_2026-10-10.csv(269行) /
+拼多多_pdd_orders_2026-10-10.csv(258行) / 订单数据(1-4).xlsx+订单数据.xlsx(淘宝 689 单)，
+直接喂 `fetch_shopping.py` 全部解析成功：
+- [淘宝] 689 订单 / 721 件商品 / 实付 ¥45887.66
+- [京东] 269 订单 / 335 件商品 / 实付 ¥41067.19
+- [拼多多] 258 订单 / 300 件商品 / 实付 ¥3878.30
+- 隐私列已剔除：快递单号、收货人、收货地址
+→ 三个平台导出格式均被 fetch_shopping 直接兼容，链路已通。
+
 ## 升级
 
 重跑 codeload 归档 → 覆盖 SKILL.md 上游部分（上游 README 原样保留，本 SKILL.md 已含运行说明，可整份覆盖）；ADAPTATION.md 不随上游更新。

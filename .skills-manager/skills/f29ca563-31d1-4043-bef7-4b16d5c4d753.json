@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "f29ca563-31d1-4043-bef7-4b16d5c4d753",
+  "path": "juyouci",
+  "path_key": "juyouci",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -427,24 +427,77 @@ python scripts/wcdb_key_tool_windows.py decrypt \
    而非 `ET.fromstring`——微信的 XML 常有不闭合/裸 `&`，严格解析会抛异常。
 2. **`update_time` 是 Unix 秒**。
 3. **标题字段因类型而异**，取值优先级：
-   - 链接(5)：`<pagetitle>` + `<link>`/`<weburl>` + `<desc>`
+   - 链接(5)：`<pagetitle>` + `<link>`/`<weburl>`/`<clean_url>` + **`<pagedesc>`**
    - 文本(1)：`<desc>`
    - 文件(8)：`<datalist><dataitem><datatitle>`（`<title>` 是 `favitem` 上的文件名）
    - 聊天记录(14)：`<title>`（如"Yugi和Xiu的聊天记录"）+ `<datadesc>`（内含 `&#x0D;&#x0A;` 需 HTML 反转义）
    - 位置(6)：`<locitem>` 的 `label`/`poiname`/`lat`/`lng`
    - 笔记(18)：`<datadesc>` + `<locitem>`
    - 媒体类(2 图片 / 3 语音 / 4 视频 / 16 短视频 / 7 音乐)：**只有 CDN key，无文字标题**，属正常
+
+   > ⚠️ **链接类的摘要是 `<pagedesc>`，不是 `<desc>`**（2026-10-10 踩坑）。
+   > 只抓 `desc` 会得到「374 条链接全部无摘要」的错误结论，实际 315 条有摘要。
+   > 链接类还有 `<appmsgshareitem><srcdisplayname>` = 公众号名（213/374 条有），
+   > `<brandid>` = 品牌 id，`<clean_url>` = 去跟踪参数的干净链接。
+
 4. **type 枚举**（实测）：1=文本 2=图片 3=语音 4=视频 5=链接 6=位置 7=音乐 8=文件 14=聊天记录 16=短视频 18=笔记
 5. 媒体文件本体不在 db 内，只存 `cdn_dataurl`/`cdn_datakey` 和数据目录路径。
+6. **WAL 已自动包含**：实测主库解密后条数与"WAL 拼接版"一致（613 条，最新到当日 09:58），
+   收藏库不需要像message 库那样额外处理 WAL 增量。
 
 ### 导出命令
 
 ```bash
-python D:/WorkBuddy/2026-09-29-14-04-17/wx_export_favorites.py \
-  --db wx_decrypted/favorite/favorite.db --out wx_export [--tag 标签名]
+PY="C:/Users/Lenovo/.workbuddy/binaries/python/envs/default/Scripts/python.exe"
+DB="D:/WorkBuddy/2026-09-29-14-04-17/wx_decrypted2/favorite/favorite.db"
+
+# 全量（613 条，含所有类型）
+"$PY" "C:/Users/Lenovo/.workbuddy/skills/wechat-cli__skillhub/scripts/wx_export_favorites.py" --db "$DB" --out wx_export
+
+# 只导链接/文章（type=5，374 条），带年份/平台/公众号/域名聚合 + 主题分析
+"$PY" "C:/Users/Lenovo/.workbuddy/skills/wechat-cli__skillhub/scripts/wx_export_favorites_links.py" \
+      --db "$DB" --out wx_export [--year 2026] [--domain zhihu]
 ```
 
-产出 `wx_export/微信收藏.md`：类型分布 + 概览表 + 逐条完整内容。
+`wx_export_favorites_links.py` 产出 `wx_export/微信收藏_链接文章.md`：
+年份分布 / 平台分布 / 域名 TOP / 公众号 TOP / 标签分布 / 明细索引 / 主题聚类 / 完整条目（含摘要+链接）。
+
+> ⚠️ 若 `wx_decrypted2/` 里的库是旧的，先重新解密再导：
+> ```python
+> W._decrypt_database(src, tmp, bytes.fromhex(keys["favorite\\favorite.db"]["enc_key"]))
+> ```
+
+---
+
+## 全部群聊基本信息导出（不含聊天记录，2026-10-10 实测 541 群）
+
+```bash
+PY="C:/Users/Lenovo/.workbuddy/binaries/python/envs/default/Scripts/python.exe"
+"$PY" "C:/Users/Lenovo/.workbuddy/skills/wechat-cli__skillhub/scripts/wx_export_groups.py" \
+      --out wx_export [--active-only] [--min-members 100]
+```
+→ 产出 `wx_export/微信群聊_基本信息.md`（规模分布 / 活跃度分布 / 群主 TOP / 群列表 / 公告摘录）
+
+### 群元数据的 6 个来源
+
+| 字段 | 来源 | 说明 |
+|---|---|---|
+| 群名 | `contact.nick_name`（fallback `remark`） | |
+| 群 ID | `contact.username` | 形如 `xxx@chatroom` |
+| **成员数** | `chatroom_member` 按 `room_id` 分组计数 | **`room_id` 是 `contact.id`（整数），不是 username** |
+| 群主 | `chat_room.owner` → contact 表查昵称 | `chat_room.username` = 群 ID，`chat_room.id` = contact.id |
+| 群公告 | `chat_room_info_detail.announcement_` | 字段带**尾下划线**；`room_id_` 同样是 contact.id |
+| 最后活跃/未读 | `session.db` 的 `SessionTable` | `last_timestamp`（Unix 秒）/`unread_count`/`is_hidden` |
+
+### 关键点
+
+- **group 表里 540 条 vs contact 表 541 条**：有 1 个群只在 contact 里、没有 chat_room 记录
+  （通常是已退出但残留的群），脚本会保留它并把成员数记为 0。
+- **整数 ID 是 `contact.id`**，不是 username。`chat_room.id` / `chatroom_member.room_id` /
+  `chat_room_info_detail.room_id_` 三者**都指向 contact.id**，可直接 join。
+- `session.db` 里 737 条会话 vs 423 个群有会话 → 有 118 个群**从未打开过或已静默**（`last_timestamp=0`）。
+- 会话表**不含消息正文**（只有 `summary` 摘要字段，本脚本故意不取），所以此导出天然无聊天内容。
+- 本脚本**不触碰任何 `Msg_*` 表**，是纯净的元数据导出。
 
 ---
 
@@ -508,7 +561,9 @@ PY="C:/Users/Lenovo/.workbuddy/binaries/python/envs/default/Scripts/python.exe"
 | `gen_keys.py` | 从已 dump 的 blob 离线解析密钥 | ✅ 实测 21/21 |
 | `switch_account.py` | 多账号切换（自动发现账号，无需硬编码） | ✅ 实测可用 |
 | `wcdb_key_tool_windows.py` | 解密库 + Config.Cipher 扫描（底层库） | 见下方说明 |
-| `wx_export_favorites.py` | 收藏导出为 Markdown | ✅ 实测 606 条 |
+| `wx_export_favorites.py` | 收藏**全量**导出为 Markdown | ✅ 实测 613 条 |
+| `wx_export_favorites_links.py` | 收藏**链接/文章专项**导出（type=5，含主题聚类） | ✅ 实测 374 条 |
+| `wx_export_groups.py` | **全部群聊基本信息**导出（无聊天内容） | ✅ 实测 541 群 |
 
 > `wcdb_key_tool_windows.py` 的 `extract` 子命令内部走的是 PBKDF2 路线，在 4.1.13 上
 > 无法命中（已在文件头注明）。它的 `decrypt` 子命令正常可用，是解密数据库的标准入口。

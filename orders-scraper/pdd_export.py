@@ -31,11 +31,13 @@ import traceback
 
 from playwright.sync_api import sync_playwright
 
-OUT = "数据结果"
+OUT = "数据结果"                        # 登录态/日志/原始接口响应（调试产物，不进数据管线）
 API_DIR = os.path.join(OUT, "pdd_api")
 ORDERS_URL = "https://mobile.yangkeduo.com/orders.html"
 STATE = os.path.join(OUT, "pdd_session.json")
 LOG_PATH = os.path.join(OUT, "pdd_export.log")
+# 订单表格落点：直接进个人站数据管线的 orders 目录，免去手动 copy（可用环境变量 ORDERS_DIR 覆盖）
+ORDERS_DIR = os.environ.get("ORDERS_DIR", r"D:\site_sources\orders")
 
 UA = ("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 "
       "(KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1")
@@ -375,7 +377,8 @@ def no_more_visible(page):
 def write_files():
     rows = sorted(ORDERS.values(), key=lambda r: (r.get("下单时间") or ""), reverse=True)
     date = dt.datetime.now().strftime("%Y-%m-%d")
-    base = os.path.join(OUT, f"pdd_orders_{date}")
+    os.makedirs(ORDERS_DIR, exist_ok=True)
+    base = os.path.join(ORDERS_DIR, f"pdd_orders_{date}")
     csv_path = base + ".csv"
     xlsx_path = base + ".xlsx"
 

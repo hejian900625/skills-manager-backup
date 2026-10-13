@@ -6,7 +6,9 @@ from datetime import datetime
 from playwright.sync_api import sync_playwright
 
 URL = "https://buyertrade.taobao.com/trade/itemlist/list_bought_items.htm"
-OUT_DIR = "数据结果"
+OUT_DIR = "数据结果"                      # 调试日志等（本脚本只捕获下载，无其它调试产物）
+# 订单下载落点：直接进个人站数据管线的 orders 目录，免去手动 copy（可用环境变量 ORDERS_DIR 覆盖）
+ORDERS_DIR = os.environ.get("ORDERS_DIR", r"D:\site_sources\orders")
 
 # 候选选择器（探测结果回来后可校准；按顺序尝试）
 EXPORT_BTN_CANDIDATES = [
@@ -72,9 +74,13 @@ def main():
                 btn.click()
             download = dl_info.value
             suggested = download.suggested_filename or f"taobao_orders_{datetime.now():%Y-%m-%d}.csv"
-            save_path = os.path.join(OUT_DIR, suggested)
+            os.makedirs(ORDERS_DIR, exist_ok=True)
+            save_path = os.path.join(ORDERS_DIR, suggested)
             download.save_as(save_path)
             print(">>> 已下载:", save_path)
+            if not suggested.lower().endswith((".xlsx", ".csv")):
+                print("!! 警告：淘宝导出为 %s，fetch_shopping 目前只吃 .xlsx/.csv；"
+                      "若为 .xls 请在 Excel 里「另存为 .xlsx」后再跑数据管线。" % suggested)
         except Exception as e:
             print("!! 点击导出后未捕获到下载。可能弹了日期范围框或跳转，错误:", e)
             print(">>> 保持浏览器打开 60s 供你观察…")

@@ -35,9 +35,11 @@ from datetime import datetime
 from playwright.sync_api import sync_playwright
 
 URL = "https://order.jd.com/center/list.action"
-OUT_DIR = "数据结果"
+OUT_DIR = "数据结果"                      # 登录态/日志/原始接口响应（调试产物，不进数据管线）
 API_DIR = os.path.join(OUT_DIR, "jd_api")
 STATE = os.path.join(OUT_DIR, "jd_session.json")  # 登录态持久化
+# 订单表格落点：直接进个人站数据管线的 orders 目录，免去手动 copy（可用环境变量 ORDERS_DIR 覆盖）
+ORDERS_DIR = os.environ.get("ORDERS_DIR", r"D:\site_sources\orders")
 
 AUTH_COOKIE_NAMES = ("pt_key", "pin")   # PC 端登录用 pin（pt_key 是手机端）
 LOGIN_MARKERS = ["text=订单中心", "text=我的订单", "#orderLite", "[class*='orderCard-']"]
@@ -610,8 +612,9 @@ def main():
             print(f"    {rng}: {st['items']}/{st['total']}（{st['resp']} 次请求）{ok}")
 
         stamp = datetime.now().strftime("%Y-%m-%d")
-        csv_path = os.path.join(OUT_DIR, f"jd_orders_{stamp}.csv")
-        xlsx_path = os.path.join(OUT_DIR, f"jd_orders_{stamp}.xlsx")
+        os.makedirs(ORDERS_DIR, exist_ok=True)
+        csv_path = os.path.join(ORDERS_DIR, f"jd_orders_{stamp}.csv")
+        xlsx_path = os.path.join(ORDERS_DIR, f"jd_orders_{stamp}.xlsx")
 
         import csv
         fields = ["订单号", "下单时间", "状态", "实付金额", "订单原价", "支付方式",

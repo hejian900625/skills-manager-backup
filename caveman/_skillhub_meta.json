@@ -1,0 +1,21 @@
+{
+  "name": "caveman",
+  "installedAt": 1790436629840,
+  "source": "marketplace",
+  "version": "1.0.0",
+  "skillId": "skill_2057443403470532608",
+  "examples_zh": [
+    "开启 caveman 模式",
+    "少废话，直接说",
+    "用 caveman 风格回答"
+  ],
+  "examples_en": [
+    "caveman mode",
+    "use caveman",
+    "less tokens"
+  ],
+  "iconSource": "letter:auto",
+  "installedContentHash": "sha256:4910a360aaae3411915d5e7c59e190c814167828802ff5f179cb1659ae9d53a6",
+  "description_zh": "超压缩沟通模式：去除废话保留技术精度，节省约 75% token",
+  "description_en": "Ultra-compressed mode: drops filler, keeps full technical accuracy, cuts ~75% tokens"
+}

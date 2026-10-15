@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "89e2c373-85d2-420b-afa4-49c59e3fb98a",
+  "path": "token-watcher-add-source",
+  "path_key": "token-watcher-add-source",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

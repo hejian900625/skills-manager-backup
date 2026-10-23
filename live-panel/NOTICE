@@ -1,0 +1,10 @@
+live-panel - notices
+
+The MIT license (see LICENSE) covers the code in this repository. The visual design,
+layout and wording that examples/codex-agents/ recreates belong to the original
+author, @thedelost (see README, "Credits"). The infographic re-animated in
+examples/agent-architecture/ belongs to 小红书 @林纾. The Airbnb figures in
+examples/airbnb/ are Airbnb's own statements from a public interview.
+
+assets/fonts/SmileySans-Oblique.woff2 is 得意黑 Smiley Sans, licensed under the SIL Open
+Font License 1.1 (assets/fonts/SmileySans-OFL.txt), not under MIT.

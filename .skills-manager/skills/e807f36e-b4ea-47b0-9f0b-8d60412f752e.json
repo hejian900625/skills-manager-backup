@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "e807f36e-b4ea-47b0-9f0b-8d60412f752e",
+  "path": "qq-nt-decrypt",
+  "path_key": "qq-nt-decrypt",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

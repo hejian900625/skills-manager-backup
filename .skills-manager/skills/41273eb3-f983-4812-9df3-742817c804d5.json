@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "41273eb3-f983-4812-9df3-742817c804d5",
+  "path": "live-panel",
+  "path_key": "live-panel",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

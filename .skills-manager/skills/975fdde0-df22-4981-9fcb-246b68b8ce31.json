@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "975fdde0-df22-4981-9fcb-246b68b8ce31",
+  "path": "anatomy",
+  "path_key": "anatomy",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

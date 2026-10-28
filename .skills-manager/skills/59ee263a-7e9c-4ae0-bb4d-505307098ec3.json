@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "59ee263a-7e9c-4ae0-bb4d-505307098ec3",
+  "path": "novel-staging",
+  "path_key": "novel-staging",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

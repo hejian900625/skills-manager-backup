@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "68256f8e-7c26-482a-b99c-84b78ed1615f",
+  "path": "wechat-group-digest",
+  "path_key": "wechat-group-digest",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

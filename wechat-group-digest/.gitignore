@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 运行时产物（数据在技能目录之外，此处兜底防误入）
+digest_src/
+insights/
+*.html

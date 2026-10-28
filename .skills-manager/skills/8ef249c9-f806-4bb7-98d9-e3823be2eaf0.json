@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "8ef249c9-f806-4bb7-98d9-e3823be2eaf0",
+  "path": "novel-outline",
+  "path_key": "novel-outline",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

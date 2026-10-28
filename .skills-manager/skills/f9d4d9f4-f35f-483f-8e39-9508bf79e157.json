@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "f9d4d9f4-f35f-483f-8e39-9508bf79e157",
+  "path": "novel-characters",
+  "path_key": "novel-characters",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

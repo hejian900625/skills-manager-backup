@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "58508582-973c-4348-a088-2493ef94f2ab",
+  "path": "big-pics-little-words",
+  "path_key": "big-pics-little-words",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

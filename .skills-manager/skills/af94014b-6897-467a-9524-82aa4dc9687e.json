@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "af94014b-6897-467a-9524-82aa4dc9687e",
+  "path": "wechat-to-chatlab",
+  "path_key": "wechat-to-chatlab",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

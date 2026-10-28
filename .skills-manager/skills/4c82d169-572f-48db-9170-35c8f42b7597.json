@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "4c82d169-572f-48db-9170-35c8f42b7597",
+  "path": "novel-storyboard",
+  "path_key": "novel-storyboard",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

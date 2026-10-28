@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "aa750c76-7564-4164-9d46-408faf29cc44",
+  "path": "novel-art",
+  "path_key": "novel-art",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

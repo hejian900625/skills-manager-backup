@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "e0711591-340c-424a-b242-7cdb64ced74b",
+  "path": "skill-upper",
+  "path_key": "skill-upper",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

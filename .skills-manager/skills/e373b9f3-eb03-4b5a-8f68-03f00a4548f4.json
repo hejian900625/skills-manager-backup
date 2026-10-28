@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "e373b9f3-eb03-4b5a-8f68-03f00a4548f4",
+  "path": "wechat-group-export",
+  "path_key": "wechat-group-export",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

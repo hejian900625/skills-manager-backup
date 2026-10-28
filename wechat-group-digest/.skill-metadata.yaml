@@ -1,0 +1,21 @@
+# 技能市场展示元数据（SkillHub 分发用，不影响技能加载；加载用 frontmatter 在 SKILL.md）
+name: wechat-group-digest
+displayName:
+  zh: 群刊编辑部
+  en: Group Digest
+summary:
+  zh: "把微信群聊统计数据做成「AI 提炼 + 统计瘦身」的单文件网页札记。管线：按月切片 → AI 通读 → 编辑部稿 → 渲染纸刊风 HTML。铁律：页面必须经 AI 提炼，不能纯自动生成。"
+  en: "Turn WeChat group stats into a single-file 'AI-refined + statistically slimmed' web digest. Pipeline: monthly slices → AI read → editorial draft → paper-style HTML. Rule: pages must be AI-refined, never auto-generated."
+version: 1.0.3
+author: 简乐
+category: content-generation
+tags:
+  - zh: 群刊
+  - en: digest
+  - zh: 网页生成
+  - en: web-generation
+  - zh: 知识提炼
+  - en: knowledge-distill
+icon: "📖"
+homepage: https://cnb.cool/fzz198479/wechat-group-digest
+license: MIT

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "977168f9-cfa2-421d-9658-7745f2c058f8",
+  "path": "business-prototype-design",
+  "path_key": "business-prototype-design",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

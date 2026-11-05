@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "98a779b0-014c-444a-9cce-6256860d6c16",
+  "path": "bid-writer-pro",
+  "path_key": "bid-writer-pro",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

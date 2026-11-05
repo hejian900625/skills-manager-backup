@@ -1,0 +1,6 @@
+interface:
+  display_name: "业务原型设计 0.2"
+  short_description: "从需求基线到可验收单文件原型的门驱动工作流"
+  default_prompt: "使用 $business-prototype-design 从最早未满足或已失效的阶段继续，并验证需求绑定证据、高风险旅程、checkpoint 和单文件交付。"
+policy:
+  allow_implicit_invocation: true

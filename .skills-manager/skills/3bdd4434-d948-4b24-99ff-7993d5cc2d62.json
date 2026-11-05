@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "3bdd4434-d948-4b24-99ff-7993d5cc2d62",
+  "path": "dev-workflow",
+  "path_key": "dev-workflow",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

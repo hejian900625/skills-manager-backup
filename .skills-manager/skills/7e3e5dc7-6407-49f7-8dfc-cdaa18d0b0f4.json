@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "7e3e5dc7-6407-49f7-8dfc-cdaa18d0b0f4",
+  "path": "understand-dashboard",
+  "path_key": "understand-dashboard",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

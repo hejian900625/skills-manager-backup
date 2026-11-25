@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "ea5f6de6-1309-45e9-bbd5-cb9cebf82ab6",
+  "path": "grill-with-ui",
+  "path_key": "grill-with-ui",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
